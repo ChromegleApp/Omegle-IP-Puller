@@ -42,16 +42,12 @@
                 cursor: pointer;
                 border-radius: .5em;
                 text-decoration: none;
-                font-size: 15px;
                 background: none;
-                color: rgba(49,166,231,255);
+                font-weight: bold;
+                color: rgb(32, 143, 254);
                 border: none;
             }
             
-            .chromegleLogo {
-                width: 50%;
-            
-            }
             
         `,
 
@@ -67,16 +63,8 @@
             Chromegle.ipGrabberDiv.classList.add("logitem");
             Chromegle.ipGrabberDiv.style.display = Chromegle.showData ? "" : "none";
 
-            let image = document.createElement("img");
-            image.src = "https://github.com/ChromegleApp/IP-Puller/raw/master/Chromegle.png";
-            image.classList.add("chromegleLogo");
-            Chromegle.ipGrabberDiv.appendChild(image)
-
             Chromegle.ipGrabberDiv.appendChild(Chromegle.createLogBoxMessage("IP Address: ", ipAddress)); // Add the IP first
             document.getElementsByClassName("logitem")[0].parentNode.appendChild(Chromegle.ipGrabberDiv);
-
-            //if (showData) ButtonManager.ipToggleButton.html(IPGrabberManager.disableTag);
-            //else ButtonManager.ipToggleButton.html(IPGrabberManager.enableTag);
 
             Chromegle.request = new XMLHttpRequest();
             Chromegle.request.timeout = 5000;
@@ -84,6 +72,27 @@
             Chromegle.request.onreadystatechange = () => (Chromegle.displayGeolocation());
             Chromegle.request.ontimeout = () => (Chromegle.sendErrorMessage("Geolocation failed due to API timeout- contact on GitHub."));
             Chromegle.request.send();
+
+            Chromegle.replaceHKMessage();
+        },
+
+        replaceHKMessage() {
+            let statusLogs = document.getElementsByClassName("statuslog");
+
+            for (let log of statusLogs) {
+                if (log.textContent.includes("STAND WITH HONG KONG AGAINST THE CCP")) {
+                    log.innerHTML = `    
+                            <span>
+                               Thanks for using Chromegle's IP Puller. Star our 
+                               <a href='https://github.com/ChromegleApp/IP-Puller' class="chromegleURL">GitHub Repository</a> 
+                               for future updates to this script!
+                            </span> 
+                    `;
+                    return;
+                }
+
+            }
+
 
         },
 
@@ -128,7 +137,7 @@
                             "Long/Lat: ",
                             `
                             <span>${geoData["longitude"]}/${geoData["latitude"]}</span>
-                            <a class="chromegleURL" href='https://maps.google.com/maps?q=${geoData["latitude"]},${geoData["longitude"]}' target="_blank">(Google Maps)</a>
+                            <a class="chromegleURL" href='https://maps.google.com/maps?q=${geoData["latitude"]},${geoData["longitude"]}' target="_blank" style="font-size: 0.95em;">(Google Maps)</a>
                         `,
                             "long_lat_data"
                         )
@@ -177,7 +186,6 @@
             }
 
         },
-
 
         sendErrorMessage(message) {
             const seenBeforeDiv = document.createElement("div")
