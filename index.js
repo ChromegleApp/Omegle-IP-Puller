@@ -48,6 +48,11 @@
                 border: none;
             }
             
+            .chromegleLogo {
+                width: 50%;
+            
+            }
+            
         `,
 
         run(ipAddress) {
@@ -61,8 +66,13 @@
             Chromegle.ipGrabberDiv = document.createElement("div");
             Chromegle.ipGrabberDiv.classList.add("logitem");
             Chromegle.ipGrabberDiv.style.display = Chromegle.showData ? "" : "none";
-            Chromegle.ipGrabberDiv.appendChild(Chromegle.createLogBoxMessage("IP Address: ", ipAddress)); // Add the IP first
 
+            let image = document.createElement("img");
+            image.src = "https://github.com/ChromegleApp/IP-Puller/raw/master/Chromegle.png";
+            image.classList.add("chromegleLogo");
+            Chromegle.ipGrabberDiv.appendChild(image)
+
+            Chromegle.ipGrabberDiv.appendChild(Chromegle.createLogBoxMessage("IP Address: ", ipAddress)); // Add the IP first
             document.getElementsByClassName("logitem")[0].parentNode.appendChild(Chromegle.ipGrabberDiv);
 
             //if (showData) ButtonManager.ipToggleButton.html(IPGrabberManager.disableTag);
