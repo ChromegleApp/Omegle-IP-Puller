@@ -15,7 +15,7 @@ Join the support discord and DM ``fallen#9745`` for inquiries, help and suggesti
 ## Installation
 
 1. Open the Console by pressing: `CTRL + Shift + I` or on Mac, `⌘ + Shift + I`
-2. Insert the [**Chromegle IP Puller**](https://github.com/ChromegleApp/Omegle-IP-Puller/blob/master/ip-puller.min.js) script into the console
+2. Insert the [**Chromegle IP Puller**](https://raw.githubusercontent.com/ChromegleApp/Omegle-IP-Puller/master/ip-puller.min.js) script into the console
 3. The IP puller will work automatically when you click "Next Chat"
 
 ### Note: Using over multiple sessions
