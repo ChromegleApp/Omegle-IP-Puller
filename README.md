@@ -8,7 +8,7 @@ Join the support discord and DM ``fallen#9745`` for inquiries, help and suggesti
 
 # Table of Contents
 
-- [Usage](#Installation)
+- [Installation](#Installation)
 - [Authors](#authors)
 - [Project License](#license)
 
